@@ -1,0 +1,69 @@
+name: NBDI Educational Diversity Analysis
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  run-analysis:
+    runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: nbdi_analysis
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install PostgreSQL client
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y postgresql-client
+
+    - name: Wait for PostgreSQL
+      run: |
+        until pg_isready -h localhost -p 5432 -U postgres; do
+          echo "Waiting for PostgreSQL..."
+          sleep 2
+        done
+
+    - name: Upload CSV data file
+      run: |
+        # Copy your CSV to a location PostgreSQL can access
+        sudo cp "Stockholm Large – NBDI2025.csv" /tmp/
+        sudo chmod 644 "/tmp/Stockholm Large – NBDI2025.csv"
+
+    - name: Run NBDI Analysis
+      run: |
+        PGPASSWORD=postgres psql -h localhost -U postgres -d nbdi_analysis -f Solution.sql
+      env:
+        PGPASSWORD: postgres
+
+    - name: Export results
+      run: |
+        # Export the final results
+        PGPASSWORD=postgres psql -h localhost -U postgres -d nbdi_analysis -c "\copy education_diversity_by_company TO 'education_diversity_by_company.csv' CSV HEADER"
+      env:
+        PGPASSWORD: postgres
+
+    - name: Upload results as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: nbdi-analysis-results
+        path: |
+          education_diversity_by_company.csv
+          *.log
