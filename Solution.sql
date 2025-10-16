@@ -1,5 +1,5 @@
 -- Active: 1760527303238@@127.0.0.1@5432@postgres
--- NBDI Data Analyst Trainee Case Assignment 2026
+-- NBDI Data Analyst Trainee Case Assignment 2025
 -- PostgreSQL Solution
 -- 
 -- OBJECTIVE: Analyze educational diversity in executive management teams
