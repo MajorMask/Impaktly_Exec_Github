@@ -13,4 +13,5 @@ This repository contains the solution for the Nordic Business Diversity Index (N
 
 ### Local Execution
 ```bash
-psql -h localhost -U your_username -d your_database -f Solution.sql
+
+psql -h 127.0.0.1 -p 5432 -U postgres -d postgres -c "\pset border 2" -c "\pset format wrapped" -c "\timing on" -f Solution.sql > analysis_results.txt 2>&1
