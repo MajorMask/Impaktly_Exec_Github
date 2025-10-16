@@ -1,0 +1,117 @@
+Company,Number of Executives,Unique Education Categories,Most Common Education Field,Share of Most Common Field,Diversity Score
+AAK,8,5,Business,0.538,0.639
+ABB,8,4,Business,0.455,0.645
+AddLife,2,1,Business,1.000,0.000
+Addnode Group,5,4,Business,0.625,0.563
+Addtech AB,7,4,Business,0.375,0.688
+AFRY,11,4,Engineering,0.533,0.596
+Alfa Laval,8,3,Business,0.400,0.640
+Alleima,10,7,Business,0.417,0.764
+Arion Bank,8,4,Business,0.556,0.617
+Arjo,9,5,Business,0.444,0.716
+ASSA ABLOY,10,4,Engineering,0.538,0.604
+AstraZeneca,11,5,Business,0.538,0.651
+Atlas Copco,10,6,Engineering,0.400,0.711
+Atrium Ljungberg,6,6,Business,0.375,0.781
+Autoliv Inc.,12,4,Engineering,0.500,0.602
+Avanza Bank Holding,10,3,Business,0.727,0.430
+Beijer Ref,8,2,Business,0.778,0.346
+Betsson,5,3,Business,0.400,0.640
+Better Collective,4,3,Business,0.500,0.625
+Bilia,10,3,Business,0.615,0.544
+Billerud AB,9,5,Business,0.455,0.694
+BioArctic,9,6,Business,0.273,0.793
+Biotage,2,2,Business,0.667,0.444
+Boliden,5,3,Business,0.571,0.571
+Bravida,10,2,Engineering,0.700,0.420
+Camurus,12,5,Sciences,0.533,0.649
+Castellum,12,6,Engineering,0.333,0.778
+Catena,7,2,Business,0.857,0.245
+Corem,6,3,Engineering,0.571,0.571
+Creaspac,2,1,Business,1.000,0.000
+Diös Fastigheter,6,3,Business,0.714,0.449
+Dometic Group,12,5,Business,0.467,0.658
+Electrolux,9,2,Business,0.778,0.346
+Embracer Group,7,5,Business,0.429,0.735
+Epiroc AB,13,3,Engineering,0.563,0.539
+EQT AB,12,4,Business,0.500,0.625
+Ericsson,17,5,Business,0.500,0.646
+Essity,13,6,Business,0.500,0.672
+Evolution,5,4,Business,0.444,0.667
+Fabege,8,3,Engineering,0.500,0.594
+Fastighets AB Balder,5,2,Business,0.800,0.320
+Fastpartner,1,2,Business,0.500,0.500
+Fortnox,7,2,Business,0.667,0.444
+Getinge,9,4,Business,0.533,0.622
+H&M,1,1,Business,1.000,0.000
+Hemnet,5,2,Business,0.600,0.480
+Hexagon,13,5,Business,0.500,0.641
+Hexpol ,6,3,Business,0.500,0.594
+HMS Networks,7,3,Engineering,0.500,0.580
+Holmen,10,6,Business,0.455,0.727
+Hufvudstaden,1,1,Business,1.000,0.000
+Husqvarna,7,4,Business,0.429,0.694
+Industrivärden,4,2,Business,0.750,0.375
+Indutrade,9,3,Business,0.538,0.556
+Instalco,8,6,Business,0.400,0.760
+Intrum,19,4,Business,0.667,0.512
+Investor AB,7,3,Business,0.500,0.625
+IPC,8,4,Engineering,0.444,0.667
+JM,11,3,Engineering,0.500,0.611
+Kindred Group,2,2,Business,0.500,0.500
+Kinnevik,7,4,Business,0.667,0.519
+Lagercrantz Group,2,1,Business,1.000,0.000
+Latour,4,3,Business,0.500,0.625
+LifCo,3,2,Business,0.667,0.444
+Lindab Group,8,3,Business,0.667,0.494
+Loomis Group,7,3,Business,0.625,0.531
+Lundbergföretagen,3,2,Business,0.750,0.375
+Lundin Gold Inc.,5,4,Business,0.500,0.656
+Lundin Mining Corporation,6,3,Engineering,0.500,0.594
+Medicover,7,4,Business,0.455,0.678
+Millicom,4,2,Business,0.800,0.320
+Mips AB,5,2,Business,0.600,0.480
+Modern Times Group MTG,4,2,Business,0.750,0.375
+Munters Group AB,9,3,Business,0.636,0.512
+Mycronic AB,7,2,Engineering,0.625,0.469
+NCAB Group Corporation,12,3,Business,0.500,0.555
+NCC,12,4,Engineering,0.462,0.627
+New Wave Group AB,1,1,"Other: ""Social-science high school""",1.000,0.000
+NIBE Industrier AB,5,3,Business,0.429,0.612
+Nolato AB,7,3,Business,0.444,0.593
+Nordea Bank Abp,12,4,Business,0.750,0.417
+Nordnet,11,5,Business,0.563,0.625
+NP3 Fastigheter AB,2,1,Business,1.000,0.000
+Nyfosa,6,4,Business,0.333,0.722
+OX2 AB,7,5,Business,0.500,0.680
+Pandox,10,2,Business,0.727,0.397
+Peab AB,8,3,Business,0.500,0.594
+Ratos AB,6,4,Business,0.333,0.722
+Saab AB,11,7,Engineering,0.308,0.805
+Sagax,3,1,Business,1.000,0.000
+Sandvik,10,4,Business,0.364,0.694
+SBB,6,3,Business,0.500,0.594
+SCA,11,6,Engineering,0.462,0.722
+Sectra AB,6,3,Business,0.429,0.612
+Sinch AB,12,4,Business,0.438,0.695
+Skandinaviska Enskilda Banken ser. A,12,2,Business,0.833,0.278
+Skanska,8,4,Business,0.417,0.694
+SKF,13,5,Engineering,0.421,0.670
+Sobi,12,5,Business,0.533,0.649
+SSAB,11,4,Business,0.429,0.663
+Storskogen Group,8,4,Business,0.727,0.446
+Swedbank,15,4,Business,0.706,0.471
+Systemair,7,2,Engineering,0.545,0.496
+Telia Company,8,4,Business,0.700,0.480
+Thule Group,9,4,Business,0.600,0.580
+TietoEVRY Corporation,9,4,Business,0.333,0.716
+TRATON SE,6,2,Business,0.571,0.490
+Trelleborg AB,7,4,Business,0.556,0.617
+Troax Group,7,2,Business,0.700,0.420
+Truecaller AB,8,4,Engineering,0.455,0.645
+Vitec,12,3,Business,0.563,0.570
+Vitrolife AB,8,6,Business,0.364,0.760
+Volvo Car AB,7,4,Business,0.556,0.617
+Volvo Group,13,5,Business,0.438,0.656
+Wallenstam AB,5,4,Business,0.333,0.722
+Wihlborgs Fastigheter AB,7,5,Business,0.429,0.735
