@@ -48,6 +48,15 @@ jobs:
           cp "Stockholm Large – NBDI2025.csv" /tmp/
           echo "CSV file copied successfully"
         fi
+
+               
+        # Verify file exists
+        if [ -f "/tmp/Stockholm Large – NBDI2025.csv" ]; then
+          echo "File verified: $(wc -l < "/tmp/Stockholm Large – NBDI2025.csv") lines"
+        else
+          echo "ERROR: CSV file creation failed"
+          exit 1
+        fi
     - name: Run NBDI Analysis
       run: |
         echo "Starting NBDI Educational Diversity Analysis..."
