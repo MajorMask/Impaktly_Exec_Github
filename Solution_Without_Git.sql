@@ -262,12 +262,11 @@ ORDER BY company;
 -- SECTION 6: RESULTS EXPORT AND SUMMARY STATISTICS
 -- ============================================================================
 
--- Export handled by GitHub Actions using client-side copy
--- COPY education_diversity_by_company TO '/tmp/education_diversity_by_company.csv' 
--- WITH (FORMAT CSV, HEADER TRUE);
+-- Export results to CSV (UPDATE PATH AS NEEDED)
+COPY education_diversity_by_company TO '/tmp/education_diversity_by_company.csv' 
+WITH (FORMAT CSV, HEADER TRUE);
 
 -- Display complete results
-
 SELECT * FROM education_diversity_by_company;
 
 -- Summary Statistics

@@ -5,7 +5,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-  workflow_dispatch:  # Allows manual trigger
+  workflow_dispatch:
 
 jobs:
   run-analysis:
@@ -17,19 +17,18 @@ jobs:
         env:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: nbdi_analysis
+          POSTGRES_USER: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-          --mount type=bind,source=/tmp,target=/tmp
-
         ports:
           - 5432:5432
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4  # Updated to v4
+      uses: actions/checkout@v4
 
     - name: Install PostgreSQL client
       run: |
@@ -45,18 +44,23 @@ jobs:
 
     - name: Prepare CSV data file
       run: |
-        # Create temp directory and copy CSV
-        sudo mkdir -p /tmp
         if [ -f "Stockholm Large – NBDI2025.csv" ]; then
-          sudo cp "Stockholm Large – NBDI2025.csv" /tmp/
-          sudo chmod 644 "/tmp/Stockholm Large – NBDI2025.csv"
+          cp "Stockholm Large – NBDI2025.csv" /tmp/
           echo "CSV file copied successfully"
         else
-          echo "CSV file not found, creating sample data for demo"
-          # Create a minimal sample CSV for testing
-          echo "company,board_or_executive,position,approximate_categorization,special_area,name,nationality,year_of_birth,educational_background,gender,remarks" > /tmp/sample.csv
-          echo "TestCorp,Executive Management,CEO,,Business,John Doe,Swedish,1970,Business,Male," >> /tmp/sample.csv
-          sudo mv /tmp/sample.csv "/tmp/Stockholm Large – NBDI2025.csv"
+          echo "Creating sample data for demo"
+          cat > "/tmp/Stockholm Large – NBDI2025.csv" << 'EOF'
+company,board_or_executive,position,approximate_categorization,special_area,name,nationality,year_of_birth,educational_background,gender,remarks
+AAK,Executive Management,CEO,Executive Management,Business,John Smith,Swedish,1970,Business,Male,
+AAK,Executive Management,CFO,Executive Management,Finance,Jane Doe,Swedish,1975,"Business, Finance",Female,
+AAK,Executive Management,CTO,Executive Management,Technology,Erik Larsson,Swedish,1980,Engineering,Male,
+ABB,Executive Management,CEO,Executive Management,Business,Lisa Anderson,Swedish,1965,Law,Female,
+ABB,Executive Management,CFO,Executive Management,Finance,Magnus Berg,Swedish,1972,Business,Male,
+ABB,Executive Management,COO,Executive Management,Operations,Anna Nilsson,Swedish,1978,Engineering,Female,
+Volvo,Executive Management,CEO,Executive Management,Business,Carl Svensson,Swedish,1968,Business,Male,
+Volvo,Executive Management,CFO,Executive Management,Finance,Maria Johansson,Swedish,1973,"Business, Law",Female,
+Ericsson,Executive Management,CEO,Executive Management,Business,Sofia Lindqvist,Swedish,1971,Engineering,Female,
+EOF
         fi
 
     - name: Run NBDI Analysis
@@ -70,33 +74,36 @@ jobs:
       env:
         PGPASSWORD: postgres
 
-    - name: Export and display results
+    - name: Export results using client-side copy
       run: |
         echo "Exporting results..."
         PGPASSWORD=postgres psql -h localhost -U postgres -d nbdi_analysis \
           -c "\copy education_diversity_by_company TO '/tmp/education_diversity_by_company.csv' CSV HEADER"
         
-        echo "Results exported. Sample output:"
-        head -10 /tmp/education_diversity_by_company.csv
+        echo "Results Summary:"
+        if [ -f "/tmp/education_diversity_by_company.csv" ]; then
+          echo "Results exported successfully"
+          echo "Companies analyzed: $(tail -n +2 /tmp/education_diversity_by_company.csv | wc -l)"
+          cat /tmp/education_diversity_by_company.csv
+        fi
       env:
         PGPASSWORD: postgres
 
     - name: Upload results as artifact
-      uses: actions/upload-artifact@v4  # Updated to v4
+      uses: actions/upload-artifact@v4
       with:
         name: nbdi-analysis-results
-        path: |
-          /tmp/education_diversity_by_company.csv
-        retention-days: 30  # Keep artifacts for 30 days
+        path: /tmp/education_diversity_by_company.csv
+        retention-days: 30
 
     - name: Display summary
       run: |
         echo "=== ANALYSIS SUMMARY ==="
         if [ -f "/tmp/education_diversity_by_company.csv" ]; then
           echo "Analysis completed successfully"
-          echo " Results saved to: education_diversity_by_company.csv"
-          echo " Total companies analyzed: $(tail -n +2 /tmp/education_diversity_by_company.csv | wc -l)"
-          echo " Download results from the 'Artifacts' section below"
+          echo "Results saved to: education_diversity_by_company.csv"
+          echo "Total companies analyzed: $(tail -n +2 /tmp/education_diversity_by_company.csv | wc -l)"
+          echo "Download results from the 'Artifacts' section"
         else
-          echo " Analysis failed - no output file generated"
+          echo "Analysis failed - no output file generated"
         fi
