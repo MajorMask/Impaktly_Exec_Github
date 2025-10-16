@@ -266,6 +266,10 @@ ORDER BY company;
 -- COPY education_diversity_by_company TO '/tmp/education_diversity_by_company.csv' 
 -- WITH (FORMAT CSV, HEADER TRUE);
 
+
+-- GitHub Actions will handle export using client-side \copy
+SELECT 'Export will be handled by GitHub Actions' AS export_status;
+
 -- Display complete results
 
 SELECT * FROM education_diversity_by_company;
@@ -323,9 +327,10 @@ ORDER BY "Diversity Score" ASC
 LIMIT 5;
 
 -- Final Status
-SELECT 
-    'Analysis completed successfully. CSV file exported to: /tmp/education_diversity_by_company.csv' AS final_message;
 
+SELECT 
+    'Analysis completed successfully. CSV export handled by GitHub Actions.' AS final_message;
+    
 -- EXPECTED OUTPUT:
 -- 1. education_diversity_by_company.csv with columns:
 --    - Company: Company name

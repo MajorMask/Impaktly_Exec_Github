@@ -47,22 +47,7 @@ jobs:
         if [ -f "Stockholm Large – NBDI2025.csv" ]; then
           cp "Stockholm Large – NBDI2025.csv" /tmp/
           echo "CSV file copied successfully"
-        else
-          echo "Creating sample data for demo"
-          cat > "/tmp/Stockholm Large – NBDI2025.csv" << 'EOF'
-company,board_or_executive,position,approximate_categorization,special_area,name,nationality,year_of_birth,educational_background,gender,remarks
-AAK,Executive Management,CEO,Executive Management,Business,John Smith,Swedish,1970,Business,Male,
-AAK,Executive Management,CFO,Executive Management,Finance,Jane Doe,Swedish,1975,"Business, Finance",Female,
-AAK,Executive Management,CTO,Executive Management,Technology,Erik Larsson,Swedish,1980,Engineering,Male,
-ABB,Executive Management,CEO,Executive Management,Business,Lisa Anderson,Swedish,1965,Law,Female,
-ABB,Executive Management,CFO,Executive Management,Finance,Magnus Berg,Swedish,1972,Business,Male,
-ABB,Executive Management,COO,Executive Management,Operations,Anna Nilsson,Swedish,1978,Engineering,Female,
-Volvo,Executive Management,CEO,Executive Management,Business,Carl Svensson,Swedish,1968,Business,Male,
-Volvo,Executive Management,CFO,Executive Management,Finance,Maria Johansson,Swedish,1973,"Business, Law",Female,
-Ericsson,Executive Management,CEO,Executive Management,Business,Sofia Lindqvist,Swedish,1971,Engineering,Female,
-EOF
         fi
-
     - name: Run NBDI Analysis
       run: |
         echo "Starting NBDI Educational Diversity Analysis..."
